@@ -1,5 +1,4 @@
 var indexes = require('indexes-of')
-
               require('colors')
 
 function compare (a, b) {
@@ -51,16 +50,26 @@ function highlight (string, query, hi) {
   }, string)
 }
 
-function context (doc, best, length) {
-  if(!best)
+function context (doc, _best, length, query) {
+  
+  if(!_best)
     return doc.substring(0, length)
+  var best = _best.slice().sort()
   length = length || 80
-  best.sort()
   var f = best.shift()
   var l = best.pop() || f
   var w = l - f
   var s = f - (Math.max(length - w, 0)/2)
-  return doc.substring(s, s + length)
+  if(w < length)
+    return doc.substring(s, s + length)
+  //how much space either side
+  var dotdotdot = (query.length + 1) * 3
+  var tl = (length - query.join('').length - dotdotdot) / (query.length * 2)
+
+  return _best.map(function (q, i) {
+    return doc.substring(q - tl, q + query[i].length + tl)
+  }).join('...')
+
 }
 
 
@@ -88,19 +97,7 @@ function bestGroup (doc, query) {
 
 module.exports = function (doc, query, length) {
   return highlight(
-    context(doc, bestGroup(doc, query), length)
+    context(doc, bestGroup(doc, query), length, query)
   , query)
 }
-
-//are there terms that are close together?
-//are terms in correct order?
-//are the terms close to the start of the document?
-
-//OKAY
-
-//recurse over the matches,
-//for a match, find the match closest to the other terms
-
-//pick each term, then pick the terms from the other queries closest to it.
-//(TODO remove common words)
 
