@@ -1,0 +1,20 @@
+{
+  "name": "search-context",
+  "description": "",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dominictarr/search-context",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dominictarr/search-context.git"
+  },
+  "dependencies": {
+    "indexes-of": "1.0.0"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "set -e; for t in test/*.js; do node $t; done"
+  },
+  "author": "Dominic Tarr <dominic.tarr@gmail.com> (dominictarr.com)",
+  "license": "MIT"  
+}
