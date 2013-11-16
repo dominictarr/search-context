@@ -6,8 +6,11 @@ Show where a query matches a document.
 
 ``` js
 var context = require('search-context')
-
-context(
+var fs = require('fs')
+var README = fs.readFileSync(__dirname + '/README.md', 'utf-8')
+console.log(
+  context(README, ['query', 'document', 'search'], 80)
+)
 
 ```
 
