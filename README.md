@@ -14,6 +14,12 @@ console.log(
 
 ```
 
+## output
+
+`search-context` finds the tightest occurance of the terms in the query.
+If the terms are far apart, the context around each term is displayed
+with ... joining them.
+
 ## License
 
 MIT
