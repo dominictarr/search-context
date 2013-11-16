@@ -1,6 +1,6 @@
 {
   "name": "search-context",
-  "description": "",
+  "description": "show the context around matches for a query",
   "version": "0.0.0",
   "homepage": "https://github.com/dominictarr/search-context",
   "repository": {
@@ -8,7 +8,8 @@
     "url": "git://github.com/dominictarr/search-context.git"
   },
   "dependencies": {
-    "indexes-of": "1.0.0"
+    "indexes-of": "1.0.0",
+    "colors":"0.6.2"
   },
   "devDependencies": {
   },
