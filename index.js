@@ -1,10 +1,10 @@
 var indexes = require('indexes-of')
               require('colors')
 
-exports = module.exports = function (doc, query, length) {
+exports = module.exports = function (doc, query, length, format) {
   return highlight(
     context(doc, bestGroup(doc, query), query, length)
-  , query)
+  , query, format)
 }
 
 exports.highlight = highlight
@@ -61,9 +61,12 @@ function min(ary, test) {
 }
 
 
-function highlight (string, query, hi) {
+function highlight (string, query, format, hi) {
   hi = hi || function (w) {
-    return w.bold
+    if (format == 'html')
+      return '<span class="sc-em">' + w + '</span>'
+    else
+      return w.bold
   }
   return query.reduce(function (string, term) {
     return string.split(new RegExp(term, 'i')).join(hi(term))
