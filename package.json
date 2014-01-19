@@ -1,7 +1,7 @@
 {
   "name": "search-context",
   "description": "show the context around matches for a query",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "homepage": "https://github.com/dominictarr/search-context",
   "repository": {
     "type": "git",
