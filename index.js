@@ -1,10 +1,11 @@
 var indexes = require('indexes-of')
               require('colors')
 
-exports = module.exports = function (doc, query, length) {
+exports = module.exports = function (doc, query, length, hi) {
   return highlight(
     context(doc, bestGroup(doc, query), query, length)
-  , query)
+  , query, hi
+  )
 }
 
 exports.highlight = highlight

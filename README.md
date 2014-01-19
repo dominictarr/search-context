@@ -8,11 +8,19 @@ Show where a query matches a document.
 var context = require('search-context')
 var fs = require('fs')
 var README = fs.readFileSync(__dirname + '/README.md', 'utf-8')
+
+function hi (string) {
+  return '***'+string.toUpperCase()+'***'
+}
+
 console.log(
-  context(README, ['query', 'document', 'search'], 80)
+  context(README, ['query', 'document', 'search'], 80, hi)
 )
 
 ```
+
+`hi` is an optional function that marks the matched string.
+By default it applies bold ansi escape to display in the terminal.
 
 ## output
 
